@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12">
+      <button (click)="OnAdd()" class="btn btn-primary float-end">Add Employee</button>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Position</th>
+          <th scope="col">Salary</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of data; index as i"
+            (mouseover)="highLight(employee.id)"
+            (mouseleave)="highLight('')"
+            [ngClass]="( i+1 )% 2 ? 'table-primary':'table-warning'"
+        >
+          <th [ngClass]="{'table-success': selected == employee.id }">{{i + 1}}</th>
+          <td [ngClass]="{'table-success': selected == employee.id }">{{employee.name}}</td>
+          <td [ngClass]="{'table-success': selected == employee.id }">{{employee.age}}</td>
+          <td [ngClass]="{'table-success': selected == employee.id }">{{employee.gender}}</td>
+          <td [ngClass]="{'table-success': selected == employee.id }">{{employee.age < 40 ? 'Jr.Employee' : 'Sr.Employee'}}</td>
+          <td [ngClass]="{'table-success': selected == employee.id }">{{employee.age | salary}}</td>
+          <td [ngClass]="{'table-success': selected == employee.id }">
+            <div class="d-flex float-end">
+              <button class="btn btn-primary me-2" (click)="OnSelect(employee)">View</button>
+              <button class="btn btn-primary me-2" (click)="OnEdit(employee)">Edit</button>
+              <button class="btn btn-primary me-2" (click)="OnDelete(employee)">Delete</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+
+

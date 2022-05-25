@@ -1,0 +1,15 @@
+  <div class="row myModal-container">
+
+    <div class="col-4 mt-5 myModal-content ">
+      <button class="btn btn-danger float-end" routerLink="/employees">X</button>
+
+      <div *ngIf="data">
+        <h1>Employee Detail</h1>
+        <p>Employee Id: {{data.id}}</p>
+        <p>Name: {{data.name | uppercase}}</p>
+        <p> Salary: {{ data.age | salary}}</p>
+      </div>
+    </div>
+  </div>
+
+
